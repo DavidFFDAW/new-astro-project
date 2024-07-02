@@ -1,22 +1,22 @@
 ---
-import { getPagedWrestlers } from '@dao/wrestler.dao';
 import Layout from '@layouts/Layout.astro';
-
-const wrestlersList = await getPagedWrestlers();
+import WrestlersList from '@components/wrestlers/list.astro';
+const filters = Astro.url.searchParams
 ---
 
 <Layout title='Wrestlers'>
     <main>
         <h1 class="text-gradient">Wrestlers</h1>
-        <ul>
-            {wrestlersList.map((wrestler) => (
-                <li>
-                    <a href={`/wrestlers/${wrestler.id}`}>
-                        {wrestler.name}
-                    </a>
-                </li>
-            ))}
-        </ul>
+
+        <form action="" method="get">
+            <div class="w1 flex start">
+                <label for="search">Search:</label>
+                <input type="text" id="search" name="search" value={filters.get('search')} />
+                <button type="submit">Search</button>
+            </div>
+        </form>
+
+        <WrestlersList filters={filters} />
     </main>
 </Layout>
 

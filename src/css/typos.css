@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Dreadnotus";
+    src: url("/fonts/DreadnoughtusMedium.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SourceSans";
+    src: url("/fonts/source-sans/SourceSans3-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.sourcesans {
+    font-family: "SourceSans", sans-serif;
+}

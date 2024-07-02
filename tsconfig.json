@@ -6,6 +6,9 @@
       "@components/*": ["src/components/*"],
       "@layouts/*": ["src/layouts/*"],
       "@database/*": ["src/database/*"],
+      "@utils/*": ["src/utils/*"],
+      "@services/*": ["src/services/*"],
+      "@css/*": ["src/css/*"],
       "@dao/*": ["src/database/models/*"]
     }
   }

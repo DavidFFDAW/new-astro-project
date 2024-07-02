@@ -1,0 +1,176 @@
+@import "./global.css";
+
+@media only screen and (max-width: 768px) {
+    .mobile-only {
+        display: block;
+    }
+    .mobile-flex {
+        display: flex;
+    }
+    .responsive-w1,
+    .w1-responsive {
+        width: 100% !important;
+    }
+    .flex.responsive-align-end {
+        align-items: flex-end;
+    }
+    .flex.responsive-align-start {
+        align-items: flex-start;
+    }
+    .flex.responsive-align-center {
+        align-items: center;
+    }
+    .flex.responsive-justify-end {
+        justify-content: flex-end;
+    }
+    .flex.responsive-justify-start {
+        justify-content: flex-start;
+    }
+    .flex.responsive-justify-center {
+        justify-content: center;
+    }
+    .flex.responsive-justify-space-between {
+        justify-content: space-between;
+    }
+    .flex.responsive-justify-space-around {
+        justify-content: space-around;
+    }
+    .flex.responsive-justify-space-evenly {
+        justify-content: space-evenly;
+    }
+    .flex.responsive-column {
+        flex-direction: column;
+    }
+
+    .page-title-custom {
+        font-size: 20px;
+    }
+    .two-column {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .grid.responsive-grid-2 {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .grid.custom-component-grid.grid-responsive {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+    .grid.adaptative-grid-three-column.responsive-grid {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
+    .sidebar-main-margin .custom-totalpage-wallpaper {
+        margin: 0;
+        width: 100%;
+        height: 105vh;
+    }
+
+    .sidebar.shown + .sidebar-main-margin {
+        margin-left: 0;
+    }
+
+    .sidebar.shown {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .custom-totalpage-wallpaper.principal,
+    .custom-wallpaper.principal {
+        /* background-image: url("/rhea.webp"); */
+        /* background-image: url("https://preview.redd.it/rhea-ripley-in-2016-and-2023-v0-5ncu4bt6ne7b1.png?width=640&crop=smart&auto=webp&s=70571df0c2c24cd3a07e84b83c0536b9e858079f"); */
+        background-image: url("https://www.usanetwork.com/sites/usablog/files/2023/09/wwe-becky-lynch-title-win.jpg");
+    }
+
+    .custom-wallpaper.default,
+    .custom-totalpage-wallpaper.default {
+        background-image: url("/cody.jpg");
+    }
+
+    .labeled-possible-states .possible-state-item.label {
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+
+    .pagination .pagination-numbers button.pagination-button {
+        padding: 0 4px;
+        font-size: 12px;
+    }
+
+    .pagination .pagination-numbers button.pagination-button .unlink {
+        color: blue;
+    }
+
+    a .fixed.btn.got-to-admin {
+        position: fixed;
+        bottom: 12px;
+        right: 12px;
+    }
+
+    .reigns-team-create-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    dialog.dialog-modal {
+        min-width: 90%;
+    }
+
+    .wrestler-card__image {
+        width: 50%;
+    }
+
+    .home-spas-links .home-links {
+        width: 100%;
+        flex-direction: row;
+        justify-content: start;
+        align-items: center;
+        padding: 16px;
+        gap: 20px;
+    }
+
+    .home-links .link {
+        font-size: 20px;
+    }
+
+    input,
+    textarea.custom,
+    select.custom {
+        font-size: 0.9em;
+    }
+
+    .flex-responsive,
+    .responsive {
+        flex-direction: column;
+    }
+
+    .total-image.blog-post-list-image {
+        width: 100%;
+        height: auto;
+        /* max-height: 192px; */
+    }
+
+    .blog-post-comments-section {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .blog-item-post-frontend {
+        gap: 30px;
+    }
+
+    .grouped-selection-overall {
+        display: none;
+    }
+
+    .table-item.wrestler-list-item.sex-gender-item.desktop-only {
+        display: none;
+    }
+    .title-container .btn.btn-go-back-route .app-bootstrap-custom-icon {
+        font-size: 15px;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 990px) {
+    .grid.adaptative-grid-three-column.responsive-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
