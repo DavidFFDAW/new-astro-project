@@ -1,5 +1,5 @@
 ---
-import { getPagedWrestlers } from '@dao/wrestler.model';
+import { getPagedWrestlers } from '@dao/wrestler.dao';
 import Layout from '@layouts/Layout.astro';
 
 const wrestlersList = await getPagedWrestlers();

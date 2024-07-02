@@ -1,0 +1,18 @@
+---
+import Layout from "@layouts/Layout.astro";
+import { getWrestlerById } from '@dao/wrestler.dao';
+const idParam = Astro.params.id;
+
+if (!idParam) {
+    throw new Error('Missing wrestler ID');
+}
+
+const wrestlerData = await getWrestlerById(+(idParam));
+---
+
+<Layout>
+    <main>
+        <h1 class="text-gradient">{wrestlerData.name} - ID: {wrestlerData.id}</h1>
+        <img src={wrestlerData.image} alt={wrestlerData.name} width="129" height="129" />
+    </main>
+</Layout>
