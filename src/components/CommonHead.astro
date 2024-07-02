@@ -1,0 +1,41 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+const title = Astro.props.title || "WWE-2K";
+const description = Astro.props.description || "WWE-2K default description";
+const canonical = `https://wwe-2k-astro.vercel.app/${Astro.url.pathname}`;
+const icon = '/icons/icon-512x512.png';
+---
+
+<!-- only for developing cases -->
+<meta name="robots" content="noindex, nofollow" />
+<!-- end -->
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="manifest" href="/manifest.webmanifest">
+<meta name="generator" content={Astro.generator} />
+
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="og:title" content={title} />
+
+<meta name="description" content={description} />
+<meta name="og:description" content={description} />
+<meta property="og:site_name" content="WWE 2K Astro" />
+<meta name="og:image" itemprop="image" content={icon} />
+<meta property="og:image:secure_url" content={icon} />
+<meta property="og:url" content={canonical} />
+<link rel="canonical" href={canonical} />
+
+<!-- Twitter metas -->
+<meta name="twitter:title" content={title} />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@pichiflus" />
+<meta name="twitter:creator" content="@pichiflus" />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={icon} />
+<!-- /Twitter metas -->
+
+<ViewTransitions />
