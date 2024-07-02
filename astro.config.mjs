@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { VitePWA } from 'vite-plugin-pwa'
 
 import node from "@astrojs/node";
 
@@ -7,5 +8,8 @@ export default defineConfig({
   output: "server",
   adapter: node({
     mode: "standalone"
-  })
+  }),
+  plugins: [
+    VitePWA({ registerType: 'autoUpdate' })
+  ]
 });

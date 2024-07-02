@@ -7,12 +7,12 @@ import { like } from 'drizzle-orm';
 
 const search = Astro.url.searchParams.get('search');
 
-const datas = await db
-    .select()
-    .from(wrestlers)
-    .where(like(wrestlers.name, `%${search}%`));
+// const datas = await db
+//     .select()
+//     .from(wrestlers)
+//     .where(like(wrestlers.name, `%${search}%`));
 
-console.log({ datas, search });
+console.log({  search });
 ---
 
 <Layout title="Welcome to Astro.">
