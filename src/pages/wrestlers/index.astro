@@ -1,0 +1,22 @@
+---
+import { getPagedWrestlers } from '@dao/wrestler.model';
+import Layout from '@layouts/Layout.astro';
+
+const wrestlersList = await getPagedWrestlers();
+---
+
+<Layout title='Wrestlers'>
+    <main>
+        <h1 class="text-gradient">Wrestlers</h1>
+        <ul>
+            {wrestlersList.map((wrestler) => (
+                <li>
+                    <a href={`/wrestlers/${wrestler.id}`}>
+                        {wrestler.name}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </main>
+</Layout>
+

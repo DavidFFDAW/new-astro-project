@@ -1,22 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
-import { db } from '../database/db';
-import { wrestlers } from '../database/schema/wrestler.js';
-import { like } from 'drizzle-orm';
-
-const search = Astro.url.searchParams.get('search');
-
-// const datas = await db
-//     .select()
-//     .from(wrestlers)
-//     .where(like(wrestlers.name, `%${search}%`));
-
-console.log({ search });
+// const search = Astro.url.searchParams.get('search');
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Home">
     <main>
+        <a href="/wrestlers">Listado luchadores</a>
         <svg
             class="astro-a"
             width="495"
@@ -75,7 +65,7 @@ console.log({ search });
     </main>
 </Layout>
 
-<style>
+<style is:global>
     main {
         margin: auto;
         padding: 1rem;
