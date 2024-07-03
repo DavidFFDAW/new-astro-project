@@ -9,6 +9,7 @@
             "@utils/*": ["src/utils/*"],
             "@services/*": ["src/services/*"],
             "@css/*": ["src/css/*"],
+            "@constants/*": ["src/constants/*"],
             "@dao/*": ["src/database/models/*"]
         }
     }
