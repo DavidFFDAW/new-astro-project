@@ -1,8 +1,8 @@
 // base pagination default limit
 export const ITEMS_PER_PAGE = 10;
 
-// seconds that will take to snackbar to disappear
-export const SNACKBAR_TIMEOUT = 4;
+// milliseconds that will take to snackbar to disappear
+export const SNACKBAR_TIMEOUT = 2000;
 
 // name of the cookie - not changed for retro-compatibility
 export const TOKEN_COOKIE = 'next-access-token';

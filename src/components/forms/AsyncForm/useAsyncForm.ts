@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import type { AsyncFormHook } from './model';
 import httpService from '@services/http.service';
 import { getSerializedForm } from '@utils/form.helper';
@@ -8,10 +8,10 @@ export default function useAsyncForm({ method }: AsyncFormHook) {
     const [formHelper, setFormHelper] = React.useState({
         loading: false,
         message: '',
-        error: false
+        error: false,
     });
 
-    const submitHook = async (e: React.FormEvent<HTMLFormElement>) => { 
+    const submitHook = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
         const endpoint = form.action;
@@ -19,35 +19,35 @@ export default function useAsyncForm({ method }: AsyncFormHook) {
 
         setFormHelper({
             ...formHelper,
-            loading: true
+            loading: true,
         });
 
         const response = await httpService[method](endpoint, serializedForm);
         const message = response.message || (response.ok ? 'Success' : 'Error: Something went wrong');
-        
+
         setFormHelper({
             ...formHelper,
             loading: false,
             error: !response.ok,
-            message: message
+            message: message,
         });
     };
 
     const snackbarAnimationEnd = (event: React.AnimationEvent) => {
-        if (event.animationName === 'snackbar-appearing') {
-            setTimeout(() => {
-                setFormHelper({
-                    ...formHelper,
-                    message: ''
-                });
-            }, SNACKBAR_TIMEOUT * 1000);
-        }
-    }
+        event.preventDefault();
+
+        setTimeout(() => {
+            setFormHelper({
+                ...formHelper,
+                message: '',
+            });
+        }, SNACKBAR_TIMEOUT);
+    };
 
     return {
         formHelper,
         setFormHelper,
         submitHook,
-        snackbarAnimationEnd
-    }
+        snackbarAnimationEnd,
+    };
 }
