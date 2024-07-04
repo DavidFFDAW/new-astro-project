@@ -3,27 +3,30 @@ import { getJWT } from './token.helper';
 
 export class Helpers {
     public static json(text: string, code: number) {
-        return Response.json(
-            {
+        return new Response(
+            JSON.stringify({
                 message: text,
-            },
+            }),
             {
                 status: code,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             },
         );
     }
 
-    public static warn(text: string, code: number) {
-        return Response.json(
-            {
-                message: text,
-                snackbar_variant: 'warning',
-            },
-            {
-                status: code,
-            },
-        );
-    }
+    // public static warn(text: string, code: number) {
+    //     return Response.json(
+    //         {
+    //             message: text,
+    //             snackbar_variant: 'warning',
+    //         },
+    //         {
+    //             status: code,
+    //         },
+    //     );
+    // }
 
     public static getBodySanitized = (field: any, def: any = '') => {
         return field ? field : def;

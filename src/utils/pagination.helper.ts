@@ -1,5 +1,3 @@
-import type { AstroGlobal } from "astro";
-
 export function getPaginationDatas(limit: number, searchParams: URLSearchParams) {
     const page = searchParams.get('page') || 1;
     
