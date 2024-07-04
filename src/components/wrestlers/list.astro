@@ -1,6 +1,6 @@
 ---
 import WrestlerDao from '@dao/wrestler.dao';
-import { getPaginationDatas } from '@utils/pagination';
+import { getPaginationDatas } from '@utils/pagination.helper';
 const filters: URLSearchParams = Astro.props.filters;
 const { offset } = getPaginationDatas(10, filters);
 
