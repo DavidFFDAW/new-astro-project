@@ -3,7 +3,7 @@ import useAsyncForm from './useAsyncForm';
 import type { AsyncFormProps } from './model';
 
 export default function AsyncForm({ endpoint, method, children }: AsyncFormProps) {
-    const { formHelper, submitHook } = useAsyncForm({
+    const { formHelper, submitHook, snackbarAnimationEnd } = useAsyncForm({
         endpoint,
         method
     });
@@ -15,7 +15,9 @@ export default function AsyncForm({ endpoint, method, children }: AsyncFormProps
             {children}
 
             {formHelper.message && (
-                <div className={`form-message ${formHelper.error ? 'error' : 'success'}`}>
+                <div className={`snackbar snackbar-form-message snackbar-type-style-${formHelper.error ? 'error' : 'success'} snackbar-appearing-animation`}
+                    onAnimationEnd={snackbarAnimationEnd}
+                >
                     {formHelper.message}
                 </div>
             )}

@@ -2,6 +2,7 @@ import React from 'react'
 import type { AsyncFormHook } from './model';
 import httpService from '@services/http.service';
 import { getSerializedForm } from '@utils/form.helper';
+import { SNACKBAR_TIMEOUT } from '@constants/config';
 
 export default function useAsyncForm({ method }: AsyncFormHook) {
     const [formHelper, setFormHelper] = React.useState({
@@ -21,11 +22,6 @@ export default function useAsyncForm({ method }: AsyncFormHook) {
             loading: true
         });
 
-        console.log({
-            endpoint,
-            serializedForm
-        })
-
         const response = await httpService[method](endpoint, serializedForm);
         const message = response.message || (response.ok ? 'Success' : 'Error: Something went wrong');
         
@@ -37,9 +33,21 @@ export default function useAsyncForm({ method }: AsyncFormHook) {
         });
     };
 
+    const snackbarAnimationEnd = (event: React.AnimationEvent) => {
+        if (event.animationName === 'snackbar-appearing') {
+            setTimeout(() => {
+                setFormHelper({
+                    ...formHelper,
+                    message: ''
+                });
+            }, SNACKBAR_TIMEOUT * 1000);
+        }
+    }
+
     return {
         formHelper,
         setFormHelper,
-        submitHook
+        submitHook,
+        snackbarAnimationEnd
     }
 }
