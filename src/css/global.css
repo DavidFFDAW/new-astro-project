@@ -62,7 +62,9 @@ body img {
 body img.unmasked {
     mask-image: none;
 }
-
+.app-padded-spaces {
+    padding: 20px 0;
+}
 .snackbar.snackbar-form-message {
     max-width: 450px;
     min-width: 200px;
