@@ -1,15 +1,15 @@
 ---
 import AsyncForm from '@components/forms/AsyncForm';
 import Layout from '@layouts/Layout.astro';
+const searchParams = Astro.url.searchParams;
 ---
 
 <Layout title="Login Page">
     <div class="w1 flex center acenter">
-
-        <AsyncForm endpoint="/auth/login" method="post" client:visible>
+        <AsyncForm endpoint="/auth/login" method="post" redirection={searchParams.get('next')} client:visible>
             <div class="w1 flex column gap down">
-                <input type="text" name="username" placeholder="Username" required/>
-                <input type="password" name="password" placeholder="Password" required/>
+                <input type="email" name="email" placeholder="user@permission.com" required />
+                <input type="password" name="password" placeholder="Password" required />
                 <button type="submit">Login</button>
             </div>
         </AsyncForm>

@@ -1,5 +1,6 @@
 export interface AsyncFormHook {
     endpoint: string;
+    redirection: string | null;
     method: 'get' | 'post' | 'put' | 'delete';
 }
 

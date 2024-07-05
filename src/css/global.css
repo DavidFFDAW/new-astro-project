@@ -65,7 +65,8 @@ body img.unmasked {
 
 .snackbar.snackbar-form-message {
     max-width: 450px;
-    width: 100%;
+    min-width: 200px;
+    text-align: center;
     position: fixed;
     top: 10px;
     right: 25px;
@@ -87,6 +88,9 @@ body img.unmasked {
 .snackbar.snackbar-form-message.snackbar-appearing-animation {
     animation: appear 1s ease;
 }
+.snackbar.snackbar-form-message.snackbar-disappearing-animation {
+    animation: disappear .7s ease-in-out;
+}
 
 .relative.form.async-form.async-react-form .loading.form-loading-internal-spinner {
     position: absolute;
@@ -94,18 +98,18 @@ body img.unmasked {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0,0,0,.4);
+    border: none;
     z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.relative.form.async-form.async-react-form .loading.form-loading-internal-spinner::after {
+.relative.form.async-form.async-react-form .loading.form-loading-internal-spinner .spinner {
     content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 50px;
-    height: 50px;
-    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     border: 5px solid #f3f3f3;
     border-top: 5px solid #3498db;
@@ -261,5 +265,18 @@ body.dark-theme ::-webkit-scrollbar-thumb {
     100% {
         opacity: 1;
         transform: translateX(0);
+    }
+}
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+        z-index: 1;
+        transform: translateX(0);
+    }
+    
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
     }
 }

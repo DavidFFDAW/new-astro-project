@@ -16,17 +16,19 @@ export class Helpers {
         );
     }
 
-    // public static warn(text: string, code: number) {
-    //     return Response.json(
-    //         {
-    //             message: text,
-    //             snackbar_variant: 'warning',
-    //         },
-    //         {
-    //             status: code,
-    //         },
-    //     );
-    // }
+    public static redirect(endpoint: string, status: number) {
+        return new Response(
+            JSON.stringify({
+                message: 'Redirecting...',
+            }),
+            {
+                status: status,
+                headers: {
+                    Location: endpoint,
+                },
+            },
+        );
+    }
 
     public static getBodySanitized = (field: any, def: any = '') => {
         return field ? field : def;
@@ -43,7 +45,7 @@ export class Helpers {
     public static checkRequiredFields(
         requestBody: any,
         requiredFields: string[],
-    ): { error: boolean; fields: string[] } {
+    ): { error: boolean; fields: string[]; joinedFields: string } {
         const missingFields: string[] = requiredFields.reduce((acc: any, key: string) => {
             const isInBody = key in requestBody;
             if (isInBody) return acc;
@@ -51,9 +53,10 @@ export class Helpers {
             return acc;
         }, []);
 
-        if (missingFields.length > 0) return { error: true, fields: missingFields };
+        if (missingFields.length > 0)
+            return { error: true, fields: missingFields, joinedFields: missingFields.join(',') };
 
-        return { error: false, fields: [] };
+        return { error: false, fields: [], joinedFields: '' };
     }
 
     public static getJWT(req: APIContext) {
