@@ -1,4 +1,4 @@
-/* @import './typos.css'; */
+@import './typos.css';
 @import './layouts.css';
 
 :root {
@@ -91,7 +91,7 @@ body img.unmasked {
     animation: appear 1s ease;
 }
 .snackbar.snackbar-form-message.snackbar-disappearing-animation {
-    animation: disappear .7s ease-in-out;
+    animation: disappear 0.7s ease-in-out;
 }
 
 .relative.form.async-form.async-react-form .loading.form-loading-internal-spinner {
@@ -100,8 +100,8 @@ body img.unmasked {
     left: 0;
     width: 100%;
     height: 100%;
-    /* background: rgba(0,0,0,.4); */
-    background: transparent;
+    background: rgba(0, 0, 0, 0.2);
+    /* background: transparent; */
     border: none;
     z-index: 100;
     display: flex;
@@ -133,6 +133,11 @@ textarea.input {
     font-size: 16px;
     background-color: #f9f9f9;
 }
+input.input:focus,
+textarea.input:focus {
+    border-color: var(--main-button-color);
+    background-color: #f9f9f9;
+}
 .btn {
     padding: 10px 15px;
     border: none;
@@ -146,7 +151,6 @@ textarea.input {
 .btn.cta {
     background-color: var(--main-button-color);
     color: #fff;
-
 }
 /* SCROLL BAR CUSTOM STYLES */
 ::-webkit-scrollbar {
@@ -306,7 +310,7 @@ body.dark-theme ::-webkit-scrollbar-thumb {
         z-index: 1;
         transform: translateX(0);
     }
-    
+
     100% {
         transform: translateX(100%);
         opacity: 0;

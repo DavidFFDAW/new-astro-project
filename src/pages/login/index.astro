@@ -1,5 +1,6 @@
 ---
 import AsyncForm from '@components/forms/AsyncForm';
+import FormGroup from '@components/forms/inputs/FormGroup';
 import Layout from '@layouts/Layout.astro';
 const searchParams = Astro.url.searchParams;
 const loginRedirection = searchParams.get('next') || '/private/dashboard';
@@ -8,19 +9,29 @@ const loginRedirection = searchParams.get('next') || '/private/dashboard';
 <Layout title="Login Page">
     <div class="w1 flex end acenter whole-login-container">
         <div class="login-form-container flex column between acenter">
-            <header class="login-header">Login</header>
+            <header class="login-header">
+                <h1 class="dreadnotus fs-xlarge">Login</h1>
+            </header>
 
             <section class="login-text-section">
-                <p>Accede a tu cuenta para poder acceder a los distintos apartados de la aplicación.</p>
+                <p class="sourcesans fw200">
+                    Accede a tu cuenta de administrador (activo) para poder ver, editar y eliminar los distintos recursos de la web. Tanto las entradas del blog como los campeones, pasando por los
+                    luchadores y los títulos
+                </p>
             </section>
 
             <AsyncForm endpoint="/auth/login" method="post" redirection={loginRedirection} client:visible>
                 <div class="w1 flex column gap-small down">
-                    <input type="email" class="input" name="email" placeholder="user@permission.com" required autofocus autocomplete="email" />
-                    <input type="password" class="input" name="password" placeholder="*********" required autocomplete="current-password" />
+                    <FormGroup label="E-mail" name="email" required>
+                        <input type="email" class="input" name="email" placeholder="user@permission.com" required autofocus autocomplete="email" />
+                    </FormGroup>
+
+                    <FormGroup label="Contraseña" name="password" required>
+                        <input type="password" class="input" name="password" placeholder="*********" required autocomplete="current-password" />
+                    </FormGroup>
 
                     <div class="w1 flex end gap-small">
-                        <button type="submit" class="btn cta" aria-label="Acceder">Acceder</button>
+                        <button type="submit" class="btn cta dreadnotus" aria-label="Acceder">Acceder</button>
                     </div>
                 </div>
             </AsyncForm>
@@ -46,8 +57,8 @@ const loginRedirection = searchParams.get('next') || '/private/dashboard';
         justify-content: space-between;
         align-items: center;
         gap: 2rem;
-        min-width: 300px;
-        max-width: 300px;
+        min-width: 360px;
+        max-width: 360px;
         min-height: 250px;
         background: #fff;
         padding: 1rem;

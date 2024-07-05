@@ -74,6 +74,9 @@ button {
 .flex {
     display: flex;
 }
+.flex.total-flex > * {
+    width: 100%;
+}
 
 .column {
     flex-direction: column;
@@ -352,6 +355,28 @@ button {
 
 .fw900 {
     font-weight: 900;
+}
+
+.fs-smaller {
+    font-size: 10px;
+}
+.fs-small {
+    font-size: 12px;
+}
+.fs-medium {
+    font-size: 16px;
+}
+.fs-big {
+    font-size: 18px;
+}
+.fs-large {
+    font-size: 20px;
+}
+.fs-xlarge {
+    font-size: 24px;
+}
+.nodisplay {
+    display: none;
 }
 
 @media only screen and (max-width: 768px) {
