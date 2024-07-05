@@ -1,6 +1,9 @@
 // base pagination default limit
 export const ITEMS_PER_PAGE = 10;
 
+// deployed final app URL
+export const DEPLOYED_APP_URL = 'https://wwe-2k-astro.vercel.app';
+
 // milliseconds that will take to snackbar to disappear
 export const SNACKBAR_TIMEOUT = 2000;
 
