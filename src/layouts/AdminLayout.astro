@@ -1,0 +1,47 @@
+---
+import CommonHead from '@components/CommonHead.astro';
+import '@css/medias.css';
+const route = Astro.url.pathname.slice(1).replace(/\//g, '-');
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <CommonHead title={Astro.props.title} />
+    </head>
+    <body id={route} class={`whole-app-container ${route}-page`}>
+        <div class="page-with-sidebar-container">
+            <aside class="sidebar show"></aside>
+            <div class="app-padded-spaces sidebar-page-margin">
+                <slot />
+            </div>
+
+            <aside class="nodisplay swiper-bottom-sidebar-items"></aside>
+        </div>
+        <style>
+            .page-with-sidebar-container .sidebar {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: var(--sidebar-width);
+                height: 100%;
+                background-color: #000;
+                border-right: 2px solid #494949;
+                background: var(--sidebar-bg);
+                background: linear-gradient(140deg, #151618, #606060);
+                backdrop-filter: blur(5px);
+                -webkit-backdrop-filter: blur(5px);
+                transition: all 0.5s ease-in-out;
+                transform: translateX(-100%);
+                z-index: 99999;
+            }
+            .page-with-sidebar-container .sidebar-page-margin {
+                margin-left: var(--sidebar-width);
+                padding: 1rem;
+            }
+            .page-with-sidebar-container .sidebar.show {
+                transform: translateX(0);
+            }
+        </style>
+    </body>
+</html>

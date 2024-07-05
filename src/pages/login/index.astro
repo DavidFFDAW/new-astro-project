@@ -7,12 +7,40 @@ const loginRedirection = searchParams.get('next') || '/private/dashboard';
 
 <Layout title="Login Page">
     <div class="w1 flex center acenter">
-        <AsyncForm endpoint="/auth/login" method="post" redirection={loginRedirection} client:visible>
-            <div class="w1 flex column gap down">
-                <input type="email" name="email" placeholder="user@permission.com" required />
-                <input type="password" name="password" placeholder="Password" required />
-                <button type="submit">Login</button>
-            </div>
-        </AsyncForm>
+        <div class="login-form-container flex column between acenter">
+            <header class="login-header">Login</header>
+
+            <section class="login-text-section">
+                <p>Entra</p>
+            </section>
+
+            <AsyncForm endpoint="/auth/login" method="post" redirection={loginRedirection} client:visible>
+                <div class="w1 flex column gap down">
+                    <input type="email" name="email" placeholder="user@permission.com" required autofocus autocomplete="email" />
+                    <input type="password" name="password" placeholder="Password" required autocomplete="current-password" />
+                    <button type="submit">Login</button>
+                </div>
+            </AsyncForm>
+        </div>
     </div>
 </Layout>
+
+<style>
+    body#login.login-page {
+        background-image: url(https://media.bizj.us/view/img/10402994/wrestlemania-65*1200xx3710-2093-308-480.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    .login-form-container {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        min-height: 250px;
+        background: #fff;
+        padding: 1rem;
+        border-radius: 8px;
+    }
+</style>
