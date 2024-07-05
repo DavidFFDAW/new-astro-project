@@ -6,19 +6,22 @@ const loginRedirection = searchParams.get('next') || '/private/dashboard';
 ---
 
 <Layout title="Login Page">
-    <div class="w1 flex center acenter">
+    <div class="w1 flex end acenter whole-login-container">
         <div class="login-form-container flex column between acenter">
             <header class="login-header">Login</header>
 
             <section class="login-text-section">
-                <p>Entra</p>
+                <p>Accede a tu cuenta para poder acceder a los distintos apartados de la aplicación.</p>
             </section>
 
             <AsyncForm endpoint="/auth/login" method="post" redirection={loginRedirection} client:visible>
-                <div class="w1 flex column gap down">
-                    <input type="email" name="email" placeholder="user@permission.com" required autofocus autocomplete="email" />
-                    <input type="password" name="password" placeholder="Password" required autocomplete="current-password" />
-                    <button type="submit">Login</button>
+                <div class="w1 flex column gap-small down">
+                    <input type="email" class="input" name="email" placeholder="user@permission.com" required autofocus autocomplete="email" />
+                    <input type="password" class="input" name="password" placeholder="*********" required autocomplete="current-password" />
+
+                    <div class="w1 flex end gap-small">
+                        <button type="submit" class="btn cta" aria-label="Acceder">Acceder</button>
+                    </div>
                 </div>
             </AsyncForm>
         </div>
@@ -33,11 +36,18 @@ const loginRedirection = searchParams.get('next') || '/private/dashboard';
         background-attachment: fixed;
         background-repeat: no-repeat;
     }
+    .whole-login-container {
+        min-height: 90vh;
+        padding: 1rem;
+    }
     .login-form-container {
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+        min-width: 300px;
+        max-width: 300px;
         min-height: 250px;
         background: #fff;
         padding: 1rem;

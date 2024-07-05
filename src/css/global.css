@@ -10,6 +10,9 @@
     --legend: #ff9800;
     --all: #c9b041;
     --font-color: #2f2f2f;
+
+    --main-button-color: #436578;
+    --secondary-button-color: #a3a8ac;
 }
 
 *,
@@ -61,9 +64,6 @@ body img {
 }
 body img.unmasked {
     mask-image: none;
-}
-.app-padded-spaces {
-    padding: 20px 0;
 }
 .snackbar.snackbar-form-message {
     max-width: 450px;
@@ -118,7 +118,36 @@ body img.unmasked {
     border-top: 5px solid #3498db;
     animation: spin 2s linear infinite;
 }
+form.form.async-form.async-react-form {
+    width: 100%;
+}
 
+/* GLOBAL INPUTs AND BUTTONs STYLES */
+input.input,
+textarea.input {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #dadada;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    background-color: #f9f9f9;
+}
+.btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: var(--secondary-button-color);
+    color: #000;
+}
+.btn.cta {
+    background-color: var(--main-button-color);
+    color: #fff;
+
+}
 /* SCROLL BAR CUSTOM STYLES */
 ::-webkit-scrollbar {
     width: 3px;

@@ -9,22 +9,7 @@ export default function AsyncForm({ endpoint, method, redirection, children }: A
     });
 
     return (
-        <form
-            action={`/api/endpoints/${endpoint.startsWith('/') ? endpoint.slice(1) : endpoint}`}
-            method={method}
-            className="relative form async-form async-react-form"
-            onSubmit={submitHook}
-        >
-            {formHelper.loading && (
-                <div className="loading form-loading-internal-spinner">
-                    <div className="spinner"></div>
-                </div>
-            )}
-
-            {Boolean(redirection) && <input type="hidden" name="redirect" value={redirection || ''} />}
-
-            {children}
-
+        <>
             {formHelper.message && (
                 <div
                     className={`snackbar snackbar-form-message snackbar-type-style-${
@@ -35,6 +20,22 @@ export default function AsyncForm({ endpoint, method, redirection, children }: A
                     {formHelper.message}
                 </div>
             )}
-        </form>
+            <form
+                action={`/api/endpoints/${endpoint.startsWith('/') ? endpoint.slice(1) : endpoint}`}
+                method={method}
+                className="relative form async-form async-react-form"
+                onSubmit={submitHook}
+            >
+                {formHelper.loading && (
+                    <div className="loading form-loading-internal-spinner">
+                        <div className="spinner"></div>
+                    </div>
+                )}
+
+                {Boolean(redirection) && <input type="hidden" name="redirect" value={redirection || ''} />}
+
+                {children}
+            </form>
+        </>
     );
 }
