@@ -1,14 +1,17 @@
 ---
 import CommonHead from '@components/CommonHead.astro';
 import '@css/medias.css';
+const route = Astro.url.pathname.slice(1).replace(/\//g, '-');
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<CommonHead />
-	</head>
-	<body>
-		<slot />
-	</body>
+    <head>
+        <CommonHead title={Astro.props.title} />
+    </head>
+    <body id={route} class={`whole-app-container ${route}-page`}>
+        <div class="app-padded-spaces">
+            <slot />
+        </div>
+    </body>
 </html>
