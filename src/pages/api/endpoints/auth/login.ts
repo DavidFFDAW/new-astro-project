@@ -39,8 +39,8 @@ export async function POST({ request }: APIContext) {
         );
 
         return response;
-    } catch (error) {
-        return Helpers.json('Error al intentar iniciar sesión', 500);
+    } catch (error: any) {
+        return Helpers.json('Error al inciar sesión: ' + error.message, 500);
     }
 }
 
