@@ -1,9 +1,11 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
-const title = Astro.props.title || "WWE-2K";
-const description = Astro.props.description || "WWE-2K default description";
-const canonical = `https://wwe-2k-astro.vercel.app/${Astro.url.pathname}`;
-const icon = '/icons/icon-512x512.png';
+import { DEPLOYED_APP_URL } from '@constants/config';
+
+const title = `WWE-2K - ${Astro.props.title}` || 'WWE-2K';
+const description = Astro.props.description || 'WWE-2K default description';
+const canonical = `${DEPLOYED_APP_URL}/${Astro.url.pathname}`;
+const icon = `${DEPLOYED_APP_URL}/icons/icon-512x512.png`;
 ---
 
 <!-- only for developing cases -->
@@ -14,7 +16,7 @@ const icon = '/icons/icon-512x512.png';
 <meta name="viewport" content="width=device-width" />
 <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="manifest" href="/manifest.webmanifest">
+<link rel="manifest" href="/manifest.webmanifest" />
 <meta name="generator" content={Astro.generator} />
 
 <title>{title}</title>
