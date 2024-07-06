@@ -7,9 +7,16 @@ const TOKEN_SECURED_PAGES = ['/private', '/admin'];
 const isAuthPages = (url: string) => AUTH_PAGES.some(page => url.startsWith(page));
 const isSecuredPages = (url: string) => TOKEN_SECURED_PAGES.some(page => url.startsWith(page));
 
+const apiRouteValidator = (context: APIContext, next: MiddlewareNext) => {
+    console.log('API route validation');
+
+    return next();
+};
+
 export async function onRequest(context: APIContext, next: MiddlewareNext) {
     const { cookies, url } = context;
     if (url.pathname.startsWith('/icons')) return next();
+    if (url.pathname.startsWith('/api/endpoints')) return apiRouteValidator(context, next);
 
     const token = cookies.get(TOKEN_COOKIE)?.value;
     const hasVerifiedToken = token && (await verifyJwtToken(token));
@@ -18,7 +25,7 @@ export async function onRequest(context: APIContext, next: MiddlewareNext) {
 
     if (isAuthPageRequested) {
         if (hasVerifiedToken) {
-            return Response.redirect(new URL('/private/dashboard', url), 302);
+            return context.redirect('/private', 302);
         }
         cookies.delete(TOKEN_COOKIE);
         return next();
@@ -28,7 +35,7 @@ export async function onRequest(context: APIContext, next: MiddlewareNext) {
         const searchParams = new URLSearchParams(url.searchParams);
         searchParams.set('next', url.pathname);
 
-        const response = Response.redirect(new URL(`/login?${searchParams}`, url));
+        const response = context.redirect('/login', 302);
         cookies.delete(TOKEN_COOKIE);
         return response;
     }
