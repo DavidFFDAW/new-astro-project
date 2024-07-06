@@ -122,6 +122,10 @@ form.form.async-form.async-react-form {
     width: 100%;
 }
 
+i.customs-icons.app-bootstrap-custom-icon {
+    line-height: 0;
+}
+
 /* GLOBAL INPUTs AND BUTTONs STYLES */
 input.input,
 textarea.input {

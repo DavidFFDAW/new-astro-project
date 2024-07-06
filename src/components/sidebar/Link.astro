@@ -1,0 +1,43 @@
+---
+interface Props {
+    active?: boolean;
+    icon?: string;
+    title?: string;
+    href?: string;
+}
+
+const opt = {
+    active: Astro.props.active || false,
+    icon: Astro.props.icon || 'question',
+    title: Astro.props.title || 'Link',
+    href: Astro.props.href || '#',
+};
+---
+
+<a title={opt.title} class={`uppercase sidebar-link flex start acenter gap-small ${opt.active ? 'active' : 'non-active'}`} href={opt.href}>
+    <i class={`bi bi-${opt.icon} customs-icons app-bootstrap-custom-icon`}></i>
+    <slot />
+</a>
+
+<style>
+    .sidebar-link {
+        width: 100%;
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+        padding: 10px 25px;
+        border-radius: 10px;
+        font-family: 'Dreadnotus', sans-serif;
+    }
+
+    .sidebar-link i {
+        color: goldenrod;
+        font-size: 16px;
+    }
+
+    .sidebar-link.active,
+    .sidebar-link:hover {
+        background: #c91727;
+        background: linear-gradient(140deg, #c91727, #1f1f1f);
+    }
+</style>

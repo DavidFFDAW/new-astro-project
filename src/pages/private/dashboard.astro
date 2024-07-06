@@ -4,7 +4,28 @@ import Card from '@components/Card.astro';
 ---
 
 <AdminLayout title="Dashboard">
-    <h1>Dashboard</h1>
+    <div class="w1 min100vh flex column end padded">
+        <h1 class="nodisplay">Dashboard</h1>
 
-    <Card href="wrestlers" title="Wrestlers" body="Check out the list of wrestlers." />
+        <Card href="wrestlers" title="Wrestlers" body="Check out the list of wrestlers." />
+    </div>
 </AdminLayout>
+
+<style>
+    body#private-dashboard.private-dashboard-page {
+        background-image: url('https://wallpapers.com/images/hd/cody-rhodes-wwe-entrance-28rxfrklndc7ho1n.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+    }
+    @media screen and (max-width: 768px) {
+        body#private-dashboard.private-dashboard-page {
+            background-image: url('https://preview.redd.it/rhea-ripley-v0-0tdn8k65ozkb1.jpg?width=640&crop=smart&auto=webp&s=fb7cd1a03437657f81d082610faa425f05cc777f');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+    }
+</style>

@@ -309,7 +309,12 @@ button {
 .minh1v {
     min-height: 99vh;
 }
-
+.min100vh {
+    min-height: 100vh;
+}
+.padded {
+    padding: 20px;
+}
 .h1vh {
     height: 100vh;
 }
@@ -374,6 +379,9 @@ button {
 }
 .fs-xlarge {
     font-size: 24px;
+}
+.uppercase {
+    text-transform: uppercase;
 }
 .nodisplay {
     display: none;

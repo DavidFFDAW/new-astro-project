@@ -1,7 +1,9 @@
 ---
 import CommonHead from '@components/CommonHead.astro';
-import '@css/medias.css';
+import Link from '@components/sidebar/Link.astro';
 const route = Astro.url.pathname.slice(1).replace(/\//g, '-');
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import '@css/medias.css';
 ---
 
 <!doctype html>
@@ -11,37 +13,109 @@ const route = Astro.url.pathname.slice(1).replace(/\//g, '-');
     </head>
     <body id={route} class={`whole-app-container ${route}-page`}>
         <div class="page-with-sidebar-container">
-            <aside class="sidebar show"></aside>
+            <aside class="sidebar show" id="sidebear">
+                <!-- <button type="button" role="button" class="btn close responsive"></button> -->
+                <div class="flex center sidebar-image-container">
+                    <a title="Image Dashboard Link" href="/private"
+                        ><img
+                            class="sidebar-image-logo"
+                            width="128"
+                            height="128"
+                            loading="lazy"
+                            src="/icons/icon-512x512.png"
+                            alt="Image Dashboard Logo"
+                            data-src="/icons/icon-512x512.png"
+                            draggable="false"
+                            aria-label="Image Dashboard Logo"
+                        /></a
+                    >
+                </div>
+                <div class="links-container-big sidebar-links-container-overflow">
+                    <div class="sidebar-links-container links">
+                        <Link title="Blog Menu Link" icon="newspaper" href="/private/blog" active={true}>Blog</Link>
+                        <Link title="Wrestlers Menu Link" icon="list-ul" href="/private/wrestlers">Wrestlers</Link>
+                        <Link title="Titulos Menu Link" icon="trophy" href="/private/championships">Titulos</Link>
+                        <Link title="Reinados Menu Link" icon="trophy-fill" href="/private/championships/reigns">Reinados</Link>
+                        <Link title="Equipos Menu Link" icon="people-fill" href="/private/teams">Equipos</Link>
+                        <Link title="Usuarios Menu Link" icon="person-fill" href="/private/users">Usuarios</Link>
+                        <Link title="Twitter Menu Link" icon="twitter-x" href="/private/twitter">Twitter</Link>
+                        <Link title="Draft Menu Link" icon="arrows-move" href="/private/draft">Draft</Link>
+                        <Link title="Galeria Menu Link" icon="images" href="/private/gallery/pages/list">Galeria</Link>
+                        <Link title="Exportacion Menu Link" icon="cloud-download" href="/private/exportation">Exportacion</Link>
+                        <Link title="Editor de imagen Menu Link" icon="camera" href="/private/image-editor">Editor de imagen</Link>
+                        <Link title="Pagina publica Menu Link" icon="window-split" href="/">Pagina publica</Link>
+                        <Link title="Logout" icon="signpost" href="/auth/logout">Logout</Link>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- <button class="btn-sidebar btn-open-sidebar"><i class="bi bi-chevron-left customs-icons app-bootstrap-custom-icon"></i></button> -->
             <div class="app-padded-spaces sidebar-page-margin">
                 <slot />
             </div>
 
             <aside class="nodisplay swiper-bottom-sidebar-items"></aside>
+
+            <style>
+                .page-with-sidebar-container .sidebar {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: var(--sidebar-width);
+                    height: 100%;
+                    background-color: #000;
+                    border-right: 2px solid #494949;
+                    background: #282a36;
+                    backdrop-filter: blur(5px);
+                    -webkit-backdrop-filter: blur(5px);
+                    transition: all 0.5s ease-in-out;
+                    transform: translateX(-100%);
+                    z-index: 99999;
+                }
+                .page-with-sidebar-container .sidebar-page-margin {
+                    margin-left: var(--sidebar-width);
+                    padding: 0 1rem;
+                }
+                .page-with-sidebar-container .sidebar.show {
+                    transform: translateX(0);
+                }
+
+                .sidebar-links-container-overflow {
+                    overflow-y: auto;
+                    height: 100%;
+                    max-height: 70vh;
+                }
+                .sidebar-links-container.links {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    gap: 5px;
+                }
+
+                @media screen and (max-width: 768px) {
+                    .page-with-sidebar-container .sidebar {
+                        display: none;
+                    }
+                    .page-with-sidebar-container .sidebar-page-margin {
+                        margin-left: 0;
+                        padding: 0 1rem;
+                    }
+                    .swiper-bottom-sidebar-items {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        width: 100%;
+                        /* padding: 1rem; */
+                        background-color: #000;
+                        background: var(--sidebar-bg);
+                        z-index: 99999;
+                    }
+                }
+            </style>
         </div>
-        <style>
-            .page-with-sidebar-container .sidebar {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: var(--sidebar-width);
-                height: 100%;
-                background-color: #000;
-                border-right: 2px solid #494949;
-                background: var(--sidebar-bg);
-                background: linear-gradient(140deg, #151618, #606060);
-                backdrop-filter: blur(5px);
-                -webkit-backdrop-filter: blur(5px);
-                transition: all 0.5s ease-in-out;
-                transform: translateX(-100%);
-                z-index: 99999;
-            }
-            .page-with-sidebar-container .sidebar-page-margin {
-                margin-left: var(--sidebar-width);
-                padding: 1rem;
-            }
-            .page-with-sidebar-container .sidebar.show {
-                transform: translateX(0);
-            }
-        </style>
     </body>
 </html>
