@@ -4,18 +4,32 @@ import { getPaginationDatas } from '@utils/pagination.helper';
 const filters: URLSearchParams = Astro.props.filters;
 const { offset } = getPaginationDatas(10, filters);
 
-const wrestlersList = await WrestlerDao.getFilterableWrestlers({
-    name: filters.get('search'),
-}, 10, offset);
+const wrestlersList = await WrestlerDao.getFilterableWrestlers(
+    {
+        name: filters.get('search'),
+    },
+    10,
+    offset,
+);
+
+console.log({
+    filters,
+    wrestlersList,
+    offset,
+});
 ---
 
 <ul class="wrestlers-list">
-    {wrestlersList.map((wrestler) => (
-        <li>
-            <a href={`/wrestlers/${wrestler.id}`} class="flex">
-                <img src={wrestler.image} alt={wrestler.name} width="80" height="80" />
-                {wrestler.name}
-            </a>
-        </li>
-    ))}
+    {
+        wrestlersList.map(wrestler => (
+            <li>
+                <a href={`/private/wrestlers/${wrestler.id}`} class="flex">
+                    <img src={wrestler.image} alt={wrestler.name} width="80" height="80" />
+                    {wrestler.name}
+                </a>
+            </li>
+        ))
+    }
 </ul>
+
+<style></style>

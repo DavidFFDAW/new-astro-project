@@ -1,10 +1,10 @@
 ---
-import Layout from '@layouts/Layout.astro';
+import AdminLayout from '@layouts/AdminLayout.astro';
 import WrestlersList from '@components/wrestlers/list.astro';
-const filters = Astro.url.searchParams
+const filters = Astro.url.searchParams;
 ---
 
-<Layout title='Wrestlers'>
+<AdminLayout title="Wrestlers">
     <main>
         <h1 class="text-gradient">Wrestlers</h1>
 
@@ -18,5 +18,4 @@ const filters = Astro.url.searchParams
 
         <WrestlersList filters={filters} />
     </main>
-</Layout>
-
+</AdminLayout>
